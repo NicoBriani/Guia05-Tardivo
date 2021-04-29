@@ -11,6 +11,7 @@ public class Alquiler {
 	private Instant diaFin;
 	private Instant diaReal;
 	private double costoTotal;
+	private Duration dias;
 	
 public Alquiler(Herramienta her, Instant diaInicio, Instant diaFin) {
 	this.herramienta = her;
@@ -29,16 +30,20 @@ public double CalcularCostoAlquiler() {
 	return this.costoTotal;
 }
 
-//public String enMora() {
+
+
+public String enMora() {
 	
-	//if(diaReal.compareTo(diaFin)) {
-		//return "VERDADERO";
-	//}
-	//if(diaReal == null && diaReal > today) {
-		//return "VERDADERO";
-	//}
-	//else return "FALSO"
-//}
+	if(((int)(this.dias.between(this.diaFin, Instant.now())).toDays()) > 0){
+		return "VERDADERO";
+	}
+	if(diaReal == null) {
+		return "VERDADERO";
+	}
+	else return "FALSO";
+}
+
+
 
 public String Finalizado() {
 	String mensaje;
